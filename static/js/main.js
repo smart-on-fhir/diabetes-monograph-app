@@ -214,7 +214,7 @@ var get_vital_sign_sets = function(){
     vitals.then(function(){
       var vitalsByCode = smart.byCode(results, 'name');
 
-      vitalsByCode['55284-4'].forEach(function(bp){
+      (vitalsByCode['55284-4']||[]).forEach(function(bp){
         var sys = itemByCode(bp, "8480-6");
         var dia = itemByCode(bp, "8462-4");
 
@@ -561,9 +561,7 @@ var get_problems = function(){
   }).promise();
 };
 
-// On SMART.ready, do all the data api calls and synchronize
-// when they are all complete.
-FHIR.oauth2.ready(function(smart){
+FHIR.oauth2.ready(function(smart) {
   window.smart = smart;
   window.patient = smart.context.patient;
   $.when(

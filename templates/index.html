@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html>
   <!--
-    SMART Diabetes Monograph
+    Genomics Advisor
     ========================
 
-    From the SMART Project <http://www.smarthealthit.org/>
-    Arjun Sanyal <arjun.sanyal@childrens.harvard.edu> - Design and Implementation
-    Rachel Eastwood - Explainer page
-
-    Notes:
-    - Designed for a 1280x1024 window size
-
-    TODO:
-    - fill in requires in manifest file
+    Adapted from SMART Diabetes Monograph from Arjun Sanyal (<arjun.sanyal@childrens.harvard.edu>).
   -->
   <head>
     <title>SMART Diabetes Monograph</title>
-      <link rel='stylesheet' href='./assets/fluid_grid_60_12_0.css'>
-      <link rel='stylesheet' href='./assets/main.css'>
+      <link rel='stylesheet' href='/static/assets/fluid_grid_60_12_0.css'>
+      <link rel='stylesheet' href='/static/assets/main.css'>
 
-      <script src='node_modules/fhirclient/fhir-client.js'></script>
+      <script src='/static/js/fhir-client.min.js'></script>
       <!-- note: we take the SMART jQuery object and make it global -->
-      <script src='./js/jquery-1.7.2.min.js'></script>
-      <script src='./js/xdate.js'></script>
-      <script src='./js/jsonld.js'></script>
-      <script src='./js/flot/jquery.flot.min.js'></script>
-      <script src='./js/flot/jquery.flot.resize.min.js'></script>
-      <!--[if lte IE 8]><script src="./js/flot/excanvas.min.js"></script><![endif]-->
-      <script src='./js/underscore.min.js'></script>
-      <script src='./js/json2.js'></script>
-      <script src='./js/jquery.tools.overlay.js'></script>
-      <script src='./js/main.js'></script>
+      <script src='/static/js/jquery-1.7.2.min.js'></script>
+      <script src='/static/js/xdate.js'></script>
+      <script src='/static/js/jsonld.js'></script>
+      <script src='/static/js/flot/jquery.flot.min.js'></script>
+      <script src='/static/js/flot/jquery.flot.resize.min.js'></script>
+      <!--[if lte IE 8]><script src="/static/js/flot/excanvas.min.js"></script><![endif]-->
+      <script src='/static/js/underscore.min.js'></script>
+      <script src='/static/js/json2.js'></script>
+      <script src='/static/js/jquery.tools.overlay.js'></script>
+      <script src='/static/js/main.js'></script>
   </head>
   <body>
 
     <div id='app_title_line'>
-      <img class='smart_bug' src='./assets/smart_bug.png' />
+      <img class='smart_bug' src='/static/assets/smart_bug.png' />
       SMART Diabetes Monograph
     </div>
 
@@ -434,8 +426,8 @@
 
           <div style='width: 48%; float: left; text-align: center; margin-top: -8px; margin-left: auto; margin-right: auto;'>
             <div>
-              <img class='mode_button' style='width: 80px; margin: none' id='sort_by_date' src='./assets/alpha_mode.png' />
-              <img class='mode_button' style='width: 80px; margin: none; display: none' id='sort_by_alpha' style='display: none' src='./assets/chrono_mode.png' />
+              <img class='mode_button' style='width: 80px; margin: none' id='sort_by_date' src='/static/assets/alpha_mode.png' />
+              <img class='mode_button' style='width: 80px; margin: none; display: none' id='sort_by_alpha' style='display: none' src='/static/assets/chrono_mode.png' />
             </div>
           </div>
         </div>
@@ -473,7 +465,7 @@
     <div class="lkv_overlay" id="lkv_overlay">
       <div id='lkv_overlay_title_line'>
         <div style='width: 78%; float: left; margin-left: 10%'>
-          <img class='smart_bug' src='./assets/smart_bug.png' />
+          <img class='smart_bug' src='/static/assets/smart_bug.png' />
           SMART Diabetes Monograph Lab Graphs
         </div>
         <div style='width: 20%; float: left; text-align: right; margin-left: -10%; font-size: smaller'>
@@ -609,7 +601,7 @@
     <div id="pt_summary" class="pt_summary">
       <div id='pt_summary_title_line'>
         <div style='width: 78%; float: left; margin-left: 10%'>
-          <img class='smart_bug' src='./assets/smart_bug.png' />
+          <img class='smart_bug' src='/static/assets/smart_bug.png' />
           SMART Diabetes Patient Summary
         </div>
         <div style='width: 20%; float: left; text-align: right; margin-left: -10%; font-size: smaller'>
@@ -757,7 +749,7 @@
     <div id="explainer" class="explainer">
       <div id='explainer_title_line'>
         <div style='width: 78%; float: left; margin-left: 10%'>
-          <img class='smart_bug' src='./assets/smart_bug.png' />
+          <img class='smart_bug' src='/static/assets/smart_bug.png' />
           SMART Diabetes Monograph App Explainer
         </div>
         <div style='width: 20%; float: left; text-align: right; margin-left: -10%; font-size: smaller'>
@@ -784,7 +776,7 @@
         <div class='grid_12 row-border'></div>
 
         <div class='grid_3'>
-          <img style='width: 80px' src="./assets/alpha_mode.png">
+          <img style='width: 80px' src="/static/assets/alpha_mode.png">
         </div>
         <div class='grid_8 prefix_1'>
           <div class="button_text_align">
@@ -796,7 +788,7 @@
 
         <div class='grid_12 row-border'></div>
 
-        <div class='grid_3' style=""><img src="./assets/explainer/explainer-charts.png" width="220" height="350"></div>
+        <div class='grid_3' style=""><img src="/static/assets/explainer/explainer-charts.png" width="220" height="350"></div>
         <div class='grid_8 prefix_1'>
           <p class="first">The graphs depict a vital sign and two tests for tracking diabetes health:</p>
           <ul>
@@ -810,7 +802,7 @@
 
 
         <div class='grid_3' style="">
-        <img src="./assets/explainer/explainer-LKV-nocircle.png" width="220" height="391"></div>
+        <img src="/static/assets/explainer/explainer-LKV-nocircle.png" width="220" height="391"></div>
         <div class='grid_8 prefix_1'>
           <p class="first"><strong>Last Known Values</strong> presents  laboratory tests used to track diabetes health:</p>
           <ul>
@@ -826,7 +818,7 @@
           <div class='grid_12 row-border'></div>
 
           <div class='grid_3' style="">
-          <img src="./assets/explainer/explainer-other.png" width="220" height="169"></div>
+          <img src="/static/assets/explainer/explainer-other.png" width="220" height="169"></div>
           <div class='grid_8 prefix_1'>
             <p class="first"><strong>Other Info</strong> presents heterogeneous data elements used to track diabetes health:</p>
             <ul>
@@ -842,10 +834,10 @@
 
       <div class='grid_7'>
              <div class="probs" style="margin-right:10px;">
-          <img src="./assets/explainer/explainer-problems-alpha-label-t2.png" width="220" height="319"><br>
+          <img src="/static/assets/explainer/explainer-problems-alpha-label-t2.png" width="220" height="319"><br>
           </div>
              <div class="probs">
-          <img src="./assets/explainer/explainer-problems-chrono-label-t2.png" width="220" height="319"><br>
+          <img src="/static/assets/explainer/explainer-problems-chrono-label-t2.png" width="220" height="319"><br>
           </div>
               <div class='clear'></div>
           </div>
@@ -867,7 +859,7 @@
           <div class='grid_12 row-border'></div>
 
           <div class='grid_5'>
-          <img src="./assets/explainer/explainer-reminders.png" width="310" height="139"></div>
+          <img src="/static/assets/explainer/explainer-reminders.png" width="310" height="139"></div>
           <div class='grid_6 prefix_1'>
             <p class="first"><strong>Reminders </strong>presents suggested tests to order for diabetes management.</p>
             <p>Suggestions are made  <em>if and only if</em>:</p>
@@ -881,7 +873,7 @@
           <div class='grid_12 row-border'></div>
 
           <div class='grid_5'>
-          <img src="./assets/explainer/explainer-allergies.png" width="310" height="62"></div>
+          <img src="/static/assets/explainer/explainer-allergies.png" width="310" height="62"></div>
           <div class='grid_6 prefix_1'>
             <p class="first"><strong>Allergies </strong>presents a list of current and past allergies.</p>
             <ul>
@@ -894,8 +886,8 @@
           <div class='grid_12 row-border'></div>
 
       <div class='grid_6'>
-             <div style="width:418px;padding-bottom:5px;margin-bottom:10px;border-bottom:1px dotted #666;"><img src="./assets/explainer/explainer-meds-alpha-t2.png" width="418" height="104"></div>
-             <div><img src="./assets/explainer/explainer-meds-chrono-label-t2.png" width="418" height="71"></div>
+             <div style="width:418px;padding-bottom:5px;margin-bottom:10px;border-bottom:1px dotted #666;"><img src="/static/assets/explainer/explainer-meds-alpha-t2.png" width="418" height="104"></div>
+             <div><img src="/static/assets/explainer/explainer-meds-chrono-label-t2.png" width="418" height="71"></div>
           </div>
           <div class='grid_5 prefix_1'>
             <p class="first"><strong>Medications </strong>presents a list of current and past medications. The MM/DD/YY date of the most recent medication date is shown in the banner.</p>
@@ -911,7 +903,7 @@
     <div id="timeline" class="timeline">
       <div id='timeline_title_line'>
         <div style='width: 78%; float: left; margin-left: 10%'>
-          <img class='smart_bug' src='./assets/smart_bug.png' />
+          <img class='smart_bug' src='/static/assets/smart_bug.png' />
           SMART Diabetes Monograph Time Line View (MOCKUP)
         </div>
         <div style='width: 20%; float: left; text-align: right; margin-left: -10%; font-size: smaller'>
@@ -920,7 +912,7 @@
       </div>
 
       <div class='clear'></div>
-      <img style='width: 1000px' src="./assets/timeline_mockup.png">
+      <img style='width: 1000px' src="/static/assets/timeline_mockup.png">
     </div>
 
   </body>

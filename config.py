@@ -12,3 +12,13 @@ CLINICAL = {
         'profile'
     ]
 }
+# OAuth2 settings for communicating with genomic server
+GENOMICS = {
+    'client_id': '28c8949f-8887-4d2a-b270-74a189cf4ba9',
+    'redirect_uri': 'http://localhost:8000/recv-redirect',
+    'scopes': ['user/Sequence.read', 'user/Patient.read'],
+    'oauth_base': 'http://genomics-advisor.smartplatforms.org:5000/auth',
+    'api_base': 'http://genomics-advisor.smartplatforms.org:5000/api'
+}
+# choose a secret key here
+SECRET_KEY = 'hello, world!'

@@ -48,6 +48,8 @@
           <a rel='#pt_summary' id='show_pt_summary_overlay'/>Patient Summary</a>
           &middot;
           <a rel='#explainer' id='show_explainer_overlay'/>App Explainer</a>
+          &middot;
+          <a rel='#genomics_advisor' id='show_genomics_overlay'/>Genomics Advisor</a>
           &nbsp;
           <span class="date_and_time"></span>
         </div>
@@ -459,6 +461,32 @@
 
           <div id='medications'></div>
         </div>
+
+        <div id='genomics_outer'><!-- begin of genomics summary -->
+          <div class='section_header' id='Genomics_Data'>Genomics Data</div>
+
+          <div class='section_subheader' id='Relative_Risks'> Relative Risks </div>
+          <div>
+            <div style='width: 40%; float: left; text-align: left;' id='DiabetesMellitus1'><b> Diabetes Mellitus 1: </b> </div> 
+            <div id='DM1Risk' style='width: 60%; float: left; text-align: left;'></div> <br>
+          </div>
+
+          <div class='gray'>
+            <div style='width: 40%; float: left; text-align: left;' id='DiabetesMellitus2'><b> Diabetes Mellitus 2: </b> </div> 
+            <div id='DM2Risk' style='width: 60%; float: left; text-align: left;'></div> <br>
+          </div>
+
+          <div>
+            <div style='width: 40%; float: left; text-align: left;' id='Hypertension'><b> Hypertension: </b> </div>
+            <div id='HYPRisk' style='width: 60%; float: left; text-align: left;'></div> <br>
+          </div>
+
+          <div class='gray'> 
+            <div style='width: 40%; float: left; text-align: left;' id='Coronary_Heart_Disease'><b> Coronary Heart Disease: </b> </div>
+            <div id='CHDRisk' style='width: 60%; float: left; text-align: left;'></div> <br> 
+          </div>
+
+        </div><!-- end of genomics summary -->
       </div>
     </div>
 
@@ -914,6 +942,73 @@
       <div class='clear'></div>
       <img style='width: 1000px' src="/static/assets/timeline_mockup.png">
     </div>
+
+    <!-- begin of genomics overlay -->
+    <div id="genomics_advisor" class="genomics">
+      <div id='genomics_title_line'>
+        <div style='width: 78%; float: left; margin-left: 10%' id='genomics_title'>
+          <img class='smart_bug' src='/static/assets/smart_bug.png' />
+          SMART Diabetes Monograph Genomics Advisor
+        </div>
+        <div style='width: 20%; float: left; text-align: right; margin-left: -10%; font-size: smaller'>
+          <a class='close' href='#' id='genomics_close'>[Close]</a>
+        </div>
+      </div>
+
+      <div class='clear'></div>
+
+      <div>
+        <div style='width: 49%; float: left'>
+          <div class='section_header' id='genomic_snp'>
+            SNP
+            <div style='width: 17%; float: right; text-align: right; margin-right: 5px' >Frequency</div>
+            <div style='width: 13%; float: right; text align: left;' id> Risk </div>
+            <div style='width: 11%; float: right; text align: left;' id> Code </div>
+            <div style='width: 13%; float: right; text align: left;'> CHRM </div>
+            <div style='width: 20%; float: right; text align: left; margin-left: 1px'> Locus </div>
+          </div>
+
+          <div class='section_subheader' id='type1'> Type 1 Diabetes  </div>
+          <div id='DM1Span'></div>
+
+          <div class='section_subheader' style='margin-top: 20px' id='type2'> Type 2 Diabetes  </div>
+          <div id='DM2Span'></div>
+
+          <div class='section_subheader' style='margin-top: 20px' id='hyper_label'> Hypertension  </div>
+          <div id='HYPSpan'></div>
+
+          <div class='section_subheader' style='margin-top: 20px' id='CoronaryHeartDisease'> Coronary Heart Disease  </div>
+          <div id='CHDSpan'></div>
+
+        </div>
+
+        <div style='width: 49%; float: right; margin-right: 10px;'>
+          <div class='section_header' id='radar_graphs_2'> Radar Graphs </div>
+          <div style='width: 250px; float: left;'>
+            <div id="radar_graph1" style="width: 250px; height:300px;"></div>		
+          </div>
+          <div style='width: 150px; float: left;'>
+            <div id="radar_graph2" style="width: 150px; height:100px;"></div>
+            <div id="radar_graph3" style="width: 150px; height:100px;"></div>
+            <div id="radar_graph4" style="width: 150px; height:100px;"></div>
+          </div>
+
+          <div class='clear'> </div>
+
+          <div class='section_header' id='advice'> Genomics Advice </div>
+          <div class='section_subheader' id='disease_info'> Disease Info </div>
+          <div id='overlay_disease'></div>
+          <div class='section_header' id='drug_advice'> Drug Advice </div>
+          <div class='section_subheader' id='snp_sub_title'>
+            SNP
+            <div style='width: 68%; float: right; text align: left;'> Advice </div>
+            <div style='width: 15%; float: right; text align: left; margin-left: -4px'> Genotype </div>
+          </div>
+          <div id='overlay_drug'></div>
+
+        </div>
+      </div>
+    </div><!-- end of genomics overlay -->
 
   </body>
 </html>

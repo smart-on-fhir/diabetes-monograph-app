@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from urllib import urlencode
 import pickle
+import json
 from datetime import datetime, timedelta
 import requests
+from functools import wraps
 from pysam import asTuple, TabixFile
-from snps import SNPS
+import snps
 from config import CLINICAL, GENOMICS, SECRET_KEY
 
 app = Flask(__name__)
@@ -21,18 +23,30 @@ def call_api(url, args={}):
     return resp.json()
 
 
+def cache(max_age):
+    def decorator(view_func):
+        @wraps(view_func)
+        def decorated(*args, **kwargs):
+            resp = view_func(*args, **kwargs)
+            resp.cache_control.max_age = max_age
+            return resp
+        return decorated
+    return decorator 
+
+
 @app.route('/')
 def index():
-    # expiration date of access token for genomics api
-    token_expires_at = session.get('token_expires_at')
-    if token_expires_at is None or pickle.loads(token_expires_at) <= datetime.now():
-        # token expired
-        return redirect(url_for('prompt_genomics_auth'))
-    return render_template('index.html') 
+    return render_template('index.html', genomic_pid=session['pid'])
 
 
 @app.route('/fhir-app/launch.html')
 def launch():
+    # expiration date of access token for genomics api
+    token_expires_at = session.get('token_expires_at')
+    if token_expires_at is None or pickle.loads(token_expires_at) <= datetime.now():
+        # need authorization to access genomic data
+        session['launch_args'] = json.dumps(request.args)
+        return redirect(url_for('prompt_genomics_auth')) 
     return render_template(
             'launch.html',
             client_id=CLINICAL['client_id'],
@@ -75,18 +89,20 @@ def recv_genomics_auth_redirect():
 @app.route('/select-patient/<pid>')
 def select_patient(pid):
     session['pid'] = pid
-    return redirect(url_for('index')) 
+    launch_args = json.loads(session['launch_args'])
+    return redirect('%s?%s'% (url_for('launch'), urlencode(launch_args))) 
 
 
-@app.route('/snps')
-def get_snps():
+@app.route('/snps/<pid>')
+@cache(3600)
+def get_snps(pid):
     '''
     return sequences mentioned in SNPData.csv
     '''
-    coords = map(make_coord_string, SNPS.values())
+    coords = map(make_coord_string, snps.COORDINATES.values())
     search_args = {
         'coordinate': ','.join(coords),
-        'patient': session['pid']
+        'patient': pid
     }
     seq_bundle = call_api('/Sequence', search_args) 
     seqs = (entry['content'] for entry in seq_bundle['entry'])
@@ -95,6 +111,15 @@ def get_snps():
         get_rsid(translation_f, seq): seq['observedSeq']
         for seq in seqs
     })
+
+
+@app.route('/snp-data')
+@cache(31536000)
+def get_snp_data():
+    '''
+    render SNPData.csv as json
+    '''
+    return jsonify(snps.DATA)
 
 
 def make_coord_string(coordinate):

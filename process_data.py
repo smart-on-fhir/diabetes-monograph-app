@@ -4,8 +4,9 @@ Read data from SNPData.csv, process them, and output snps.py for use later
 from pysam import TabixFile, asTuple
 import csv
 
-snps = set(row['SNP'] for row in csv.DictReader(open('SNPData.csv'))
-        if row['Chromosome'] is not None)
+with open('SNPData.csv') as src:
+    snps = {row['SNP']: row for row in csv.DictReader(src)
+            if row['Chromosome'] is not None}
 
 if __name__ == '__main__':
     f = TabixFile('snps.sorted.txt.gz', parser=asTuple())
@@ -21,4 +22,5 @@ if __name__ == '__main__':
     
     with open('snps.py', 'w') as dump:
         dump.write("'''\nAuto-generated from SNPData.csv. Don't touch me.\n'''\n")
-        dump.write('SNPS = %s'% snp_table)
+        dump.write('COORDINATES = %s\n'% snp_table)
+        dump.write('DATA = %s\n'% snps)

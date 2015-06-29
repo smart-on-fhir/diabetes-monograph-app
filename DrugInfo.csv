@@ -1,0 +1,98 @@
+SNP,Genotype,Drug,Effect
+rs20417,CC,rofecoxib,May have better pain relief response to rofecoxib than ibuprofen
+rs20417,CG,rofecoxib,May have better pain relief response to ibuprofen than rofecoxib.
+rs20417,GG,rofecoxib,May have better pain relief response to ibuprofen than rofecoxib.
+rs20455,AA,pravastatin,Patients with the AA genotype who are treated with statins may have a decreased. but not absent. risk for adverse cardiovascular events as compare to patients with the AG or GG genotype. Other genetic and clinical factors may also influence a patients risk for adverse cardiovascular events.
+rs20455,AG,pravastatin,Patients with the AG genotype who are treated with statins may have an increased risk for adverse cardiovascular events as compared to patients with the AA genotype.
+rs20455,GG,pravastatin,Patients with the GG genotype who are treated with statins may have an increased risk for adverse cardiovascular events as compared to patients with the AA genotype.
+rs2306283,AG,repaglinide,This genotype is not associated with reduced plasma concentrations of repaglinide and higher blood glucose concentrations after repaglinide intake in people with no health problems
+rs2306283,GA,repaglinide,While the GG genotype is associated with reduced plasma concentrations of repaglinide. no results are shown for the GA genotype.
+rs2306283,GG,repaglinide,This genotype is associated with reduced plasma concentrations of repaglinide and higher blood glucose concentrations after repaglinide intake in people with no health problems compared to AA genotype.
+rs2306283,AA,pravastatin,is not associated with decreased plasma AUC of pravastatin.
+rs2306283,GA,pravastatin,The G allele (GG or GA) is associated decreased plasma AUC of pravastatin.
+rs2306283,GG,pravastatin,The G allele (GG or GA) is associated decreased plasma AUC of pravastatin.
+rs4149056,CC,methotrexate,Patients with the CC genotype and precursor cell lymphoblastic leukemia-lymphoma who are treated with methotrexate: 1) may have increased clearance of methotrexate as compared to patients with the TT genotype 2) may not require additional monitoring as compared to patients with the TT genotype. Other genetic and clinical factors may also influence a patients response to methotrexate.
+rs4149056,CT,methotrexate,Patients with the CT genotype and precursor cell lymphoblastic leukemia-lymphoma who are treated with methotrexate: 1) may have increased clearance of methotrexate as compared to patients with the TT genotype 2) may not require additional monitoring as compared to patients with the TT genotype. Other genetic and clinical factors may also influence a patients response to methotrexate.
+rs4149056,TT,methotrexate,Patients with the TT genotype and precursor cell lymphoblastic leukemia-lymphoma who are treated with methotrexate: 1) may have decreased clearance of methotrexate as compared to patients with the CT or CC genotype 2) may require additional monitoring as compared to patients with the CT or CC genotype.
+rs4149056,CC,repaglinide,May have increased glucose lowering in response to repaglinide.
+rs4149056,CT,repaglinide,Has average chance of response to repaglinide.
+rs4149056,TT,repaglinide,Has average chance of response to repaglinide.
+rs4149056,CC,repaglinide,The CC genotype was associated with increased mean plasma AUC of repaglinide and greater glucose lowering effect of repaglinide relative to CT and TT genotypes.
+rs4149056,CT,repaglinide,The CT genotype was associated with increased mean plasma AUC of repaglinide relative to TT genotype.
+rs4149056,TT,repaglinide,The TT genotype carriers had reduced mean plasma AUC of repaglinide relative to CC and CT genotype carriers.
+rs4149056,CC,nateglinide,This genotype has no significant effect on the PK or PD of nateglinide.
+rs4149056,CT,nateglinide,This genotype has no significant effect on the PK or PD of nateglinide.
+rs4149056,TT,nateglinide,This genotype has no significant effect on the PK or PD of nateglinide.
+rs4149056,CC,simvastatin,A person with this genotype may have a higher risk of simvastatin-related myopathy than does a person with genotype CT or TT.
+rs4149056,CT,simvastatin,A person with this genotype may have a higher risk of simvastatin-related myopathy than does a person with genotype TT. and a lower risk than does a person with genotype CC.
+rs4149056,TT,simvastatin,A person with this genotype may have no increased risk of simvastatin-related myopathy.
+rs4149081,AA,methotrexate,Patients with the AA genotype and precursor cell lymphoblastic leukemia-lymphoma who are treated with methotrexate: 1) may have decreased clearance of methotrexate as compared to patients with the AG or GG genotype 2) may have a decreased. but not absent. risk of GI toxicity as compared to patients with the AG or GG genotype. Other genetic and clinical factors may also influence a patients risk of GI toxicity.
+rs4149081,AG,methotrexate,Patients with the AG genotype and precursor cell lymphoblastic leukemia-lymphoma who are treated with methotrexate: 1) may have increased clearance of methotrexate as compared to patients with the AA genotype 2) may have an increased risk of GI toxicity as compared to patients with the AA genotype.
+rs4149081,GG,methotrexate,Patients with the GG genotype and precursor cell lymphoblastic leukemia-lymphoma who are treated with methotrexate: 1) may have increased clearance of methotrexate as compared to patients with the AA genotype 2) may have an increased risk of GI toxicity as compared to patients with the AA genotype.
+rs10792367,GG,hydrochlorothiazide,associated with decreased blood pressure preduction
+rs11191548,GG,Beta Blocking Agents,associated with decreased reduction in diastolic blood pressure
+rs11191548,GG,Thiazides, plain,associated with decreased reduction in diastolic blood pressure
+rs11209716,CC,Ace Inhibitors,Patients with the CC genotype and hypertension who are treated with ACE inhibitors may have a decreased. but not absent. risk of cough as compared to patients with the TT genotype. Other genetic and clinical factors may also influence a patients risk of cough when treated with ACE inhibitors.
+rs11209716,CT,Ace Inhibitors,Patients with the genotype have not been studied.
+rs11209716,TT,Ace Inhibitors,Patients with the TT genotype and hypertension who are treated with ACE inhibitors may have an increased risk of cough as compared to patients with the CC genotype.
+rs11739136,CC,verapamil,Patients with the CC genotype: 1) may have increased blood pressure. 2) increased risk for hypertension and 3) slower control of blood pressure when treated with verapamil as compared to patients with the TT or CT genotypes. Other genetic and clinical factors may also influence a patients blood pressure and response to antihypertensives.
+rs11739136,CT,verapamil,Patients with the CT genotype: 1) may have decreased blood pressure. 2) decreased risk for hypertension and 3) faster control of blood pressure when treated with verapamil as compared to patients with the CC genotype. Other genetic and clinical factors may also influence a patients blood pressure and response to antihypertensives.
+rs11739136,TT,verapamil,Patients with the CT genotype: 1) may have decreased blood pressure. 2) decreased risk for hypertension and 3) faster control of blood pressure when treated with verapamil as compared to patients with the CC genotype. Other genetic and clinical factors may also influence a patients blood pressure and response to antihypertensives.
+rs12946454,TT,diltiazem,Allele A is associated with increased reduction in blood pressure when treated with diltiazem in people with Hypertension as compared to allele T .
+rs1799722,CC,Ace Inhibitors,Patients with the CC genotype who are treated with ACE inhibitors may have a decreased. but not absent. risk for cough as compared to patients with the CT and TT genotype. Other genetic and clinical factors may also influence a patients risk for cough.
+rs1799722,CT,Ace Inhibitors,Patients with the CT genotype who are treated with ACE inhibitors may have an increased risk for cough as compared to patients with the CC genotype.
+rs1799722,TT,Ace Inhibitors,Patients with the TT genotype who are treated with ACE inhibitors may have an increased risk for cough as compared to patients with the CC genotype.
+rs2016848,AA,Ace Inhibitors,Patients with the AA genotype who are treated with ACE inhibitors may have an increased risk for cough as compared to patients with the GG genotype.
+rs2016848,AG,Ace Inhibitors,Patients with this genotype were not studied.
+rs2016848,GG,Ace Inhibitors,Patients with the GG genotype who are treated with ACE inhibitors may have a decreased. but not absent. risk for cough as compared to patients with the AA genotype. Other genetic and clinical factors may also influence a patients risk for cough with ACE inhibitor treatment.
+rs2070744,CC,Antihypertensives And Diuretics In Combination,Patients with the CC genotype who are treated with antihypertensive drugs may have an increased risk for resistance as compared to patients with the CT or TT genotype.
+rs2070744,CT,Antihypertensives And Diuretics In Combination,Patients with the CT genotype who are treated with antihypertensive drugs may have a decreased. but not absent. risk for resistance as compared to patients with the CC genotype. Other genetic and clinical factors may also influence a patients risk for resistance.
+rs2070744,TT,Antihypertensives And Diuretics In Combination,Patients with the TT genotype who are treated with antihypertensive drugs may have a decreased. but not absent. risk for resistance as compared to patients with the CC genotype. Other genetic and clinical factors may also influence a patients risk for resistance.
+rs2277869,CC,hydrochlorothiazide,Genotype CC is associated with increased reduction in whole day ambulatory blood pressure when treated with hydrochlorothiazide in people with Essential hypertension as compared to genotypes CT + TT .
+rs2301149,CC,verapamil,Allele C is associated with decreased risk of risk of primary outcome (all cause mortality. nonfatal myocardial infarction or nonfatal stroke) when treated with verapamil in people with Hypertension as compared to allele G .
+rs3025058,AA,chlorthalidone,Genotype AA is associated with increased risk of stroke in hypertensive subjects taking lisinopril compared with AA genotype patients treated with chlorthalidone when treated with chlorthalidone or lisinopril in people with Hypertension 
+rs3025058,AA,lisinopril,Genotype AA is associated with increased risk of stroke in hypertensive subjects taking lisinopril compared with AA genotype patients treated with chlorthalidone when treated with chlorthalidone or lisinopril in people with Hypertension 
+rs4149601,AA,hydrochlorothiazide,Allele A is associated with increased pressure reduction when treated with hydrochlorothiazide in people with Hypertension as compared to genotype GG . 
+rs4149601,AA,hydrochlorothiazide,Genotype AA is associated with decreased reduction in SBP when treated with hydrochlorothiazide in people with Hypertension 
+rs495828,TT,Ace Inhibitors,Genotypes GT + TT are associated with angiotensin-converting enzyme inhibitors-induced cough when treated with Ace Inhibitors. Plain as compared to genotype GG 
+rs495828,GT,Ace Inhibitors,Genotypes GT + TT are associated with angiotensin-converting enzyme inhibitors-induced cough when treated with Ace Inhibitors. Plain as compared to genotype GG 
+rs4961,TT,hydrochlorothiazide,Allele T is associated with the largest mean blood pressure decrease in combination with the I allele of ACE:I/D variant when treated with hydrochlorothiazide in people with Hypertension as compared to allele G .
+rs4961,GT,hydrochlorothiazide,Allele T is associated with the largest mean blood pressure decrease in combination with the I allele of ACE:I/D variant when treated with hydrochlorothiazide in people with Hypertension as compared to allele G .
+rs4961,TT,hydrochlorothiazide,Allele T is associated with decreased reduction in ambulatory SBP when treated with hydrochlorothiazide in men with Hypertension as compared to genotype G .
+rs4961,GT,hydrochlorothiazide,Allele T is associated with decreased reduction in ambulatory SBP when treated with hydrochlorothiazide in men with Hypertension as compared to genotype G .
+rs4961,GT,hydrochlorothiazide,Genotype GT is associated with increased reduction in mean arterial pressure when treated with hydrochlorothiazide in people with Essential hypertension as compared to genotype GG .
+rs4961,GT,hydrochlorothiazide,Genotypes GT + TT are associated with increased reduction in mean blood pressure when treated with hydrochlorothiazide in people with Hypertension as compared to genotype GG .
+rs4961,TT,hydrochlorothiazide,Genotypes GT + TT are associated with increased reduction in mean blood pressure when treated with hydrochlorothiazide in people with Hypertension as compared to genotype GG .
+rs4961,GT,diuretics,Genotypes GT + TT are associated with decreased likelihood of Myocardial Infarction when treated with diuretics in people with Hypertension .
+rs4961,TT,diuretics,Genotypes GT + TT are associated with decreased likelihood of Myocardial Infarction when treated with diuretics in people with Hypertension .
+rs4961,GT,Antihypertensives,Genotypes GT + TT are not associated with increased reduction in blood pressure when treated with Antihypertensives in people with Hypertension as compared to genotype GG .
+rs4961,TT,Antihypertensives,Genotypes GT + TT are not associated with increased reduction in blood pressure when treated with Antihypertensives in people with Hypertension as compared to genotype GG .
+rs5065,AA,amlodipine,May have increased chance of positive treatment response to calcium channel blockers.
+rs5065,AA,chlorthalidone,May have increased chance of positive treatment response to calcium channel blockers.
+rs5065,AG,amlodipine,May have increased chance of positive treatment response to diuretics.
+rs5065,AG,chlorthalidone,May have increased chance of positive treatment response to diuretics.
+rs5065,GG,amlodipine,May have increased chance of positive treatment response to diuretics.
+rs5065,GG,chlorthalidone,May have increased chance of positive treatment response to diuretics.
+rs5182,CC,perindopril,Has average risk for cardiac events when treated with perindopril.
+rs5182,CT,perindopril,Has average risk for cardiac events when treated with perindopril.
+rs5182,TT,perindopril,May have reduced risk for cardiac events when treated with perindopril.
+rs5186,TT,Thiazides,Allele A is associated with increased risk of Diabetes Mellitus when treated with Thiazides. plain .
+rs5186,TT,hydrochlorothiazide,Genotype A is associated with increased reduction in blood pressure when treated with hydrochlorothiazide in women with Essential hypertension as compared to genotype C .
+rs5186,TT,atenolol,The effect was only seen in African American women.
+rs5186,TT,losartan,The effect was only seen in African American women.
+rs5186,AC,irbesartan,Genotypes AC + CC are associated with blood pressure response when treated with irbesartan in people with Hypertension as compared to genotype AA
+rs5186,CC,irbesartan,Genotypes AC + CC are associated with blood pressure response when treated with irbesartan in people with Hypertension as compared to genotype AA
+rs6749447,GG,losartan,Genotypes GG + GT are associated with decreased reduction in ambulatory blood pressure when treated with losartan in men with Hypertension as compared to genotype TT .
+rs6749447,GT,losartan,Genotypes GG + GT are associated with decreased reduction in ambulatory blood pressure when treated with losartan in men with Hypertension as compared to genotype TT .
+rs699,GG,Ace Inhibitors,Genotype GG is associated with decreased risk of Stroke when treated with Ace Inhibitors. Plain in people with Hypertension. Comparison is with users of other antihypertensive medications and AA/AG genotypes.
+rs699,GG,Ace Inhibitors,Genotype GG is not associated with decreased risk of Myocardial Infarction when treated with Ace Inhibitors. Plain in people with Hypertension .
+rs699,GG,atenolol,Allele G is not associated with the reduction in systolic blood pressure. diastolic blood pressure. pulse pressure. mean arterial pressure. or heart rate. or treatment differences between losartan and atenolol on these endpoints or risk of the primary composite endpoint or its components stroke. myocardial infarction. and cardiovascular death. or treatment differences between losartan and atenolol on these endpoints when treated with losartan or atenolol as compared to allele A .
+rs699,GG,losartan,Allele G is not associated with the reduction in systolic blood pressure. diastolic blood pressure. pulse pressure. mean arterial pressure. or heart rate. or treatment differences between losartan and atenolol on these endpoints or risk of the primary composite endpoint or its components stroke. myocardial infarction. and cardiovascular death. or treatment differences between losartan and atenolol on these endpoints when treated with losartan or atenolol as compared to allele A .
+rs699,AA,Antihypertensives,Genotype AA is not associated with increased reduction in blood pressure when treated with Antihypertensives in people with Hypertension as compared to genotype GG .
+rs7297610,CC,hydrochlorothiazide,Genotype CC is associated with increased reduction in blood pressure when treated with hydrochlorothiazide in people with Hypertension as compared to genotypes CT + TT . This association was not seen in Caucasians or patients treated with atenolol.
+rs7297610,CC,hydrochlorothiazide,Genotype CC is associated with decreased expression of YEATS4 when treated with hydrochlorothiazide in whole blood RNA as compared to whole blood RNA from TT or CT individuals where expression did not change significantly compared to at baseline.
+rs7297610,CC,hydrochlorothiazide,Allele C is associated with increased reduction in blood pressure when treated with hydrochlorothiazide in people with Essential hypertension as compared to genotype T 
+rs8012552,CC,Ace Inhibitors,Patients with the CC genotype and hypertension who are treated with ACE-inhibitors may have an increased risk of cough as compared to patients with the TT genotype.
+rs8012552,CT,Ace Inhibitors,Patients with this genotype were not studied.
+rs8012552,TT,Ace Inhibitors,Patients with the TT genotype and hypertension who are treated with ACE-inhibitors may have a decreased. but not absent. risk of cough as compared to patients with the CC genotype. Other genetic and clinical factors may also influence a patients risk of cough with ACE-inhibitors.
+rs880054,TT,hydrochlorothiazide,Genotype TT is associated with decreased reduction in SBP when treated with hydrochlorothiazide in people with Hypertension as compared to genotypes CT + TT .

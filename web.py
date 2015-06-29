@@ -11,8 +11,9 @@ from config import CLINICAL, GENOMICS, SECRET_KEY
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
-SNP_TRANSLATION_FNAME = 'snps.sorted.txt.gz'
 
+SNP_TRANSLATION_FNAME = 'snps.sorted.txt.gz'
+YEAR = 31536000
 
 def call_api(url, args={}):
     # who even uses xml..
@@ -102,7 +103,8 @@ def get_snps(pid):
     coords = map(make_coord_string, snps.COORDINATES.values())
     search_args = {
         'coordinate': ','.join(coords),
-        'patient': pid
+        'patient': pid,
+        '_count': 100000
     }
     seq_bundle = call_api('/Sequence', search_args) 
     seqs = (entry['content'] for entry in seq_bundle['entry'])
@@ -114,12 +116,21 @@ def get_snps(pid):
 
 
 @app.route('/snp-data')
-@cache(31536000)
+@cache(YEAR)
 def get_snp_data():
     '''
     render SNPData.csv as json
     '''
     return jsonify(snps.DATA)
+
+
+@app.route('/drug-info')
+@cache(YEAR)
+def get_drug_info():
+    '''
+    render DrugInfo.csv as json
+    '''
+    return jsonify(snps.DRUG_INFO)
 
 
 def make_coord_string(coordinate):

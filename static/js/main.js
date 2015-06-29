@@ -1170,37 +1170,6 @@ FHIR.oauth2.ready(function(smart) {
     // clone demo line into lkv popup
     $('#lkv_top_line').html($('#top_line').html())
 
-    // events
-    $('#sort_by_date').on('click',  function(){
-      $('#sort_by_date').hide()
-      $('#sort_by_alpha').show()
-      $('.header_sort_toggle').text('[Alpha]');
-      sort_by_date();
-      return false;
-    });
-    $('#sort_by_alpha').on('click', function(){
-      $('#sort_by_alpha').hide()
-      $('#sort_by_date').show()
-      $('.header_sort_toggle').text('[Chrono]');
-      sort_by_alpha();
-      return false;
-    });
-
-    $('.header_sort_toggle').on('click', function(e){
-      if ($(this).text() == '[Chrono]') {
-        $('.header_sort_toggle').text('[Alpha]');
-        $('#sort_by_date').hide()
-        $('#sort_by_alpha').show()
-        sort_by_date();
-      } else {
-        $('.header_sort_toggle').text('[Chrono]');
-        $('#sort_by_alpha').hide()
-        $('#sort_by_date').show()
-        sort_by_alpha();
-      }
-
-      return false;
-    })
 
     var l_opts = {
       top: '5%',
@@ -1275,8 +1244,12 @@ FHIR.oauth2.ready(function(smart) {
     // reminders in the pt summary (todo: refactor dry!!)
     // look into the processed reminders array, see if there are reminders for
     // bps
-    $('.bp_systolic_ps').html('<span class="">'+_round(pt.sbp[1], 0)+'</span>');
-    $('.bp_diastolic_ps').html('<span class="">'+_round(pt.dbp[1], 0)+'</span>');
+    if (pt.sdb) {
+      $('.bp_systolic_ps').html('<span class="">'+_round(pt.sbp[1], 0)+'</span>');
+    }
+    if (pt.dbp) {
+      $('.bp_diastolic_ps').html('<span class="">'+_round(pt.dbp[1], 0)+'</span>');
+    }
 
     // ldl or a1c
     var last_test_html = '';

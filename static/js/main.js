@@ -1200,7 +1200,6 @@ FHIR.oauth2.ready(function(smart) {
     // setup overlays
     $("#show_overlay[rel]").overlay(l_opts);
     $("#show_pt_summary_overlay[rel]").overlay(pts_opts);
-    $("#show_explainer_overlay[rel]").overlay({top: '5%'});
     $("#show_timeline_overlay[rel]").overlay({top: '5%'});
     // setup genomics overlay here
     $('#show_genomics_overlay[rel]').overlay({top: '5%'});

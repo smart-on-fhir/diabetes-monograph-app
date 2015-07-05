@@ -22,3 +22,4 @@ GENOMICS = {
 }
 # choose a secret key here
 SECRET_KEY = 'hello, world!'
+GOOGLE_API_KEY = 'AIzaSyB01GeX_HiuZbHCkZ-P5hJ7yUHVkwFS07Q'

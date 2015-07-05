@@ -1,3 +1,5 @@
 examples
 *.pyc
 *.swp
+# i do experiments here
+t.py

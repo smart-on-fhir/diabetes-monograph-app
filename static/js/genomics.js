@@ -1,5 +1,8 @@
 var snpData; 
 var drugInfo;
+var frequencies;
+// url for getting allele frequencies in 1000 Genomes
+var okg_url = '/frequencies/google/10473108253681171589'
 
 var riskSummaryIds = {
   "Type 1 Diabetes": "DM1Risk",
@@ -177,6 +180,15 @@ var renderColumnGraph = function(risks, topSNPs, renderTo) {
   return new Highcharts.Chart(opt);
 }
 
+var loadFrequencies = function() {
+  return $.Deferred(function(dfd) {
+    $.getJSON(okg_url, function(freqs) {
+      frequencies = freqs;
+      dfd.resolve();
+    }); 
+  }).promise();
+};
+
 var loadSnpData = function() {
   return $.Deferred(function(dfd) { 
     $.getJSON('/snp-data', function(sd) {
@@ -240,13 +252,14 @@ var createDrugAdvicHtml = function(advice) {
 
 var createSnpHtml = function(snp, isGray) {
   var colorClass = isGray ? 'class="gray"': "";
+  var freq = frequencies[snp.SNP] || 'N/A';
   return "<div "+colorClass+">"+
     "<div style='width: 26%; float: left; text align: left; margin-left: 2px'>"+snp.SNP+"</div>"+
     "<div style='width: 20%; float: left; text align: left; margin-left: -2px'>"+snp.Locus+"</div>"+
     "<div style='width: 13%; float: left; text align: left;'>"+snp.Chromosome+"</div>"+
     "<div style='width: 11%; float: left; text align: left;'>"+snp.Code+"</div>"+
     "<div style='width: 13%; float: left; text align: left;'>"+snp.Risk+"</div>"+
-    "<div style='width: 15%; float: right; text-align: right; margin-right: 5px'>"+snp.Frequency+"</div>"+
+    "<div style='width: 15%; float: right; text-align: right; margin-right: 5px'>"+freq+"</div>"+
     "<div class='clear'></div>"+
     "</div>"; 
 };
@@ -314,5 +327,6 @@ $(document).ready(function() {
   $.when(
     loadSnpData()
     , loadGenomicData()
+    , loadFrequencies()
     , loadDrugInfo()).then(processGenomicData);
 });

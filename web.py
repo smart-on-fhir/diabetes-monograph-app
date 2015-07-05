@@ -7,6 +7,7 @@ import requests
 from functools import wraps
 from pysam import asTuple, TabixFile
 import snps
+import ga4gh
 from config import CLINICAL, GENOMICS, SECRET_KEY
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ app.secret_key = SECRET_KEY
 
 SNP_TRANSLATION_FNAME = 'snps.sorted.txt.gz'
 YEAR = 31536000
+DAY = 86400
 
 def call_api(url, args={}):
     # who even uses xml..
@@ -131,6 +133,23 @@ def get_drug_info():
     render DrugInfo.csv as json
     '''
     return jsonify(snps.DRUG_INFO)
+
+
+@app.route('/frequencies/<repo_id>/<dataset>')
+@cache(DAY)
+def get_frequencies(repo_id, dataset):
+    '''
+    return genotype frequencies within a paticular ga4gh dataset
+    '''
+    genotypes = {snp: snp_data['Code'] for snp, snp_data in snps.DATA.iteritems()}
+    try:
+        frequencies = ga4gh.get_frequencies(
+                genotypes=genotypes,
+                dataset=dataset,
+                repo_id=repo_id)
+    except:
+        frequencies = {}
+    return jsonify(frequencies)
 
 
 def make_coord_string(coordinate):

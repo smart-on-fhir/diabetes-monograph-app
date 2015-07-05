@@ -2,7 +2,7 @@ var snpData;
 var drugInfo;
 var frequencies;
 // url for getting allele frequencies in 1000 Genomes
-var okg_url = '/frequencies/google/10473108253681171589'
+var okg_url = '/frequencies'
 
 var riskSummaryIds = {
   "Type 1 Diabetes": "DM1Risk",

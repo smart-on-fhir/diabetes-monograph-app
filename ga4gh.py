@@ -17,30 +17,15 @@ logger.addHandler(ch)
 
 
 CONTENT_TYPE_HEADER = {'Content-Type': 'application/json; charset=UTF-8'} 
+# NOTE only google's Variant API works properly
 REPOSITORIES = {
    'google': 'https://www.googleapis.com/genomics/v1beta2',
    'ncbi': 'http://trace.ncbi.nlm.nih.gov/Traces/gg',
    'ebi': 'http://193.62.52.16',
    'ensembl': 'http://grch37.rest.ensembl.org/ga4gh'
 }
-DATASETS = {
-    'Google': {
-        '1000 Genomes': '10473108253681171589',
-        'DREAM SMC Challenge': '337315832689',
-        'PGP': '383928317087',
-        'Simons Foundation' : '461916304629'
-    },
-    'NCBI': {
-        'SRP034507': 'SRP034507',
-        'SRP029392': 'SRP029392'
-    },
-    'EBI': {
-        'All data': 'data'
-    },
-    'Ensembl': {
-        'All data': '2'
-    }
-}
+# signal for worker thread being done
+DONE = None
 
 
 def search(endpoint, repo_id, **data):
@@ -81,8 +66,17 @@ def execute_search(queue, *args, **kwargs):
     execute search and shuff result into queue (if there's a result)
     '''
     try:
-        queue.put(search(*args, **kwargs))
+        while True:
+            resp = search(*args, **kwargs)
+            queue.put(resp)
+            pageToken = resp.get('nextPageToken')
+            if pageToken is not None:
+                kwargs['pageToken'] = pageToken 
+            else:
+                queue.put(DONE)
+                break
     except:
+        queue.put(DONE)
         pass
 
 
@@ -94,22 +88,16 @@ def get_frequencies(genotypes, dataset, repo_id):
     :return: a dictionary, key of which are variants, values of which are
     frequencies of variants
     '''
-    # key: chromosome, value: (min_pos, max_pos)
-    chromosomes = {}
     rsids_by_coords = {}
     rsids = set()
     for rsid in genotypes:
         rsids.add(rsid)
         coord = COORDINATES[rsid]
         chrom = coord['chromosome']
-        end = int(coord['pos'])
+        end = coord['pos']
         start = end - 1
-        min_pos, max_pos = chromosomes.setdefault(chrom, (start, end))
-        if min_pos > start:
-            chromosomes[chrom] = start, max_pos
-        if max_pos < end:
-            chromosomes[chrom] = min_pos, end
-        rsids_by_coords['%s:%d-%d'% (chrom, start, end)] = rsid
+        rsids_by_coords['%s:%s-%s'% (chrom, start, end)] = rsid
+
     variantset_search_resp = search('variantsets', repo_id, datasetIds=[dataset])
     variant_set_ids = [vs['id'] for vs in variantset_search_resp['variantSets']]
     # queue to receive search responses
@@ -120,22 +108,25 @@ def get_frequencies(genotypes, dataset, repo_id):
             search_resps,
             'variants',
             variantSetIds=[vsid],
-            referenceName=chrom,
-            start=bound[0],
-            end=bound[1],
-            pageSize=1000000,
+            referenceName=COORDINATES[rsid]['chromosome'],
+            start=COORDINATES[rsid]['pos']-1,
+            end=COORDINATES[rsid]['pos'],
             repo_id=repo_id)
-        for chrom, bound in chromosomes.iteritems()
+        for rsid in genotypes 
         for vsid in variant_set_ids
     ] 
     # count total population and population that has genotype
     total_pops = defaultdict(int)
     matched_pops = defaultdict(int)
-    num_recvd = 0
-    while num_recvd < len(variant_searches):
-        num_recvd += 1
+    num_finished = 0
+    i = 0 
+    while num_finished < len(variant_searches):
         resp = search_resps.get()
-        for variant in resp['variants']:
+        if resp == DONE:
+            num_finished += 1
+            continue
+
+        for variant in resp['variants']: 
             rsid = rsids_by_coords.get('%s:%s-%s'% (
                 variant['referenceName'],
                 variant['start'],
@@ -151,9 +142,9 @@ def get_frequencies(genotypes, dataset, repo_id):
                 # convert genotype indices into genotypes
                 gt = [gts[i] for i in call['genotype']]
                 if matches(gt, genotypes[rsid]):
-                    matched_pops[rsid] += 1
-        
-    
+                    matched_pops[rsid] += 1 
+                    match_rate = matched_pops[rsid]/total_pops[rsid]
+                    print 'Found match for %s -- match rate %.2f%%'% (rsid, match_rate*100)
     return {rsid: get_percentage(matched_pops[rsid], total_pops[rsid])
             for rsid in genotypes
             if total_pops[rsid] != 0}

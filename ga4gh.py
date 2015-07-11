@@ -16,6 +16,7 @@ logger.setLevel(logging.INFO)
 logger.addHandler(ch)
 
 
+OKG = '10473108253681171589' 
 CONTENT_TYPE_HEADER = {'Content-Type': 'application/json; charset=UTF-8'} 
 # NOTE only google's Variant API works properly
 REPOSITORIES = {

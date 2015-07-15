@@ -1,6 +1,6 @@
 # OAuth2 settings for communicating with clinical server
 CLINICAL = {
-    'client_id': '9af27c81-077d-4cf2-857a-f6d08aa040e5',
+    'client_id': '0d3665bd-0951-4737-bc2c-b20142ed6dcb',
     'redirect_uri': 'http://localhost:8000/',
     'scopes': [
         'launch',

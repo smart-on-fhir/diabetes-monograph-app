@@ -338,5 +338,9 @@ p.first { margin-top:0 }
   margin-bottom: 16px;
 }
 
+#population {
+    cursor: pointer;
+}
+
 .header_sort_toggle { font-weight: bold; color: black; font-size: smaller;}
 .header_sort_toggle:hover { border-bottom: none !important;}

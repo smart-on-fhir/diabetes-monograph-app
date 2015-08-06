@@ -4,16 +4,9 @@ import gevent
 import gevent.queue
 import requests
 import json
-import logging
 from collections import defaultdict
 from snps import COORDINATES
 from config import GOOGLE_API_KEY
-
-ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
-logger = logging.getLogger('GA4GH')
-logger.setLevel(logging.INFO)
-logger.addHandler(ch)
 
 
 OKG = '10473108253681171589' 
@@ -34,9 +27,8 @@ def search(endpoint, repo_id, **data):
     resp = requests.post('%s/%s/search?key=%s'% (api_base, endpoint, GOOGLE_API_KEY),
             data=json.dumps(data),
             headers=CONTENT_TYPE_HEADER)
-    #logger.info('Get GA4GH search response: %s'% resp.text) 
     if resp.status_code != 200:
-        raise Exception('Search on %s failed with arguments: %s'% (resp.url, data))
+        raise Exception('Search on %s failed with arguments: %s -- %s'% (resp.url, data, resp.text))
     else:
         return resp.json()
 
@@ -55,7 +47,7 @@ def matches(a, b):
     return True
 
 
-def get_percentage(a, b):
+def pct(a, b):
     '''
     percentage of a/b
     '''
@@ -81,13 +73,12 @@ def execute_search(queue, *args, **kwargs):
         pass
 
 
-def get_frequencies(genotypes, dataset, repo_id):
+def search_variants(genotypes, dataset, repo_id):
     '''
-    get allele frequencies within a dataset
+    yield genotypes within a dataset
 
     :param genotypes: dictionary mapping a variant name to a genotype
-    :return: a dictionary, key of which are variants, values of which are
-    frequencies of variants
+    :yield: GAVariant
     '''
     rsids_by_coords = {}
     rsids = set()
@@ -116,11 +107,7 @@ def get_frequencies(genotypes, dataset, repo_id):
         for rsid in genotypes 
         for vsid in variant_set_ids
     ] 
-    # count total population and population that has genotype
-    total_pops = defaultdict(int)
-    matched_pops = defaultdict(int)
     num_finished = 0
-    i = 0 
     while num_finished < len(variant_searches):
         resp = search_resps.get()
         if resp == DONE:
@@ -132,20 +119,35 @@ def get_frequencies(genotypes, dataset, repo_id):
                 variant['referenceName'],
                 variant['start'],
                 variant['end']))
-            if rsid is None:
-                # not the variant we care about
+            if rsid is not None:
+                yield rsid, variant
+
+
+def get_frequencies(variants, genotypes, population=lambda _:True):
+    '''
+    get allele frequencies within a population
+
+    :param genotypes: dictionary mapping a variant name to a genotype
+    :parma population: function to check if a variant call falls in the population
+    :return: a dictionary, key of which are variants, values of which are
+    frequencies of variants
+    '''
+    matched_pops = defaultdict(int)
+    total_pops = defaultdict(int) 
+    for rsid, variant in variants:
+        total_pops[rsid] += len(variant['calls'])
+        ref = [variant['referenceBases']]
+        alts = variant['alternateBases']
+        gts = ref + alts
+        for call in variant['calls']:
+            if not population(call):
                 continue
-            total_pops[rsid] += len(variant['calls'])
-            ref = [variant['referenceBases']]
-            alts = variant['alternateBases']
-            gts = ref + alts
-            for call in variant['calls']:
-                # convert genotype indices into genotypes
-                gt = [gts[i] for i in call['genotype']]
-                if matches(gt, genotypes[rsid]):
-                    matched_pops[rsid] += 1 
-                    match_rate = matched_pops[rsid]/total_pops[rsid]
-                    print 'Found match for %s -- match rate %.2f%%'% (rsid, match_rate*100)
-    return {rsid: get_percentage(matched_pops[rsid], total_pops[rsid])
+            # convert genotype indices into genotypes
+            gt = [gts[i] for i in call['genotype']]
+            if matches(gt, genotypes[rsid]):
+                matched_pops[rsid] += 1 
+                match_rate = matched_pops[rsid] / total_pops[rsid]
+                
+    return {rsid: pct(matched_pops[rsid], total_pops[rsid])
             for rsid in genotypes
             if total_pops[rsid] != 0}

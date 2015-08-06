@@ -13,7 +13,7 @@
 
 <!-- global data -->
 <script>
-genomic_pid = "{{ genomic_pid }}";
+sample_id = "{{ sample_id }}";
 </script>
 
 <script src='/static/js/fhir-client.min.js'></script>
@@ -802,7 +802,9 @@ genomic_pid = "{{ genomic_pid }}";
     <div style='width: 49%; float: left'>
       <div class='section_header' id='genomic_snp'>
         SNP
-        <div style='width: 17%; float: right; text-align: right; margin-right: 5px' >Frequency</div>
+        <div style='width: 18.5%; float: right; text-align: right; margin-right: 5px'>
+            <span id="population">[Frequency]</span>
+        </div>
         <div style='width: 13%; float: right; text align: left;' id> Risk </div>
         <div style='width: 11%; float: right; text align: left;' id> Code </div>
         <div style='width: 13%; float: right; text align: left;'> CHRM </div>
@@ -846,6 +848,7 @@ genomic_pid = "{{ genomic_pid }}";
     </div>
   </div>
 </div><!-- end of genomics overlay -->
+
 
 </body>
 </html>

@@ -68,6 +68,7 @@ def get_snps(sample_id):
     variants = ga4gh.search_variants(
             GENOTYPES,
             ga4gh.OKG,
+            callSetIds=[sample_id],
             repo_id='google')
     snps = {}
     for rsid, variant in variants:
@@ -102,6 +103,7 @@ def get_drug_info():
 @cache(YEAR)
 def get_frequencies():
     return jsonify(freq.FREQUENCIES) 
+
 
 @app.route('/callsets')
 def get_callsets(): 

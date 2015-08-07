@@ -73,7 +73,7 @@ def execute_search(queue, *args, **kwargs):
         pass
 
 
-def search_variants(genotypes, dataset, repo_id):
+def search_variants(genotypes, dataset, repo_id, callSetIds=None):
     '''
     yield genotypes within a dataset
 

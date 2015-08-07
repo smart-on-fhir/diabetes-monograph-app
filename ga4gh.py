@@ -135,13 +135,13 @@ def get_frequencies(variants, genotypes, population=lambda _:True):
     matched_pops = defaultdict(int)
     total_pops = defaultdict(int) 
     for rsid, variant in variants:
-        total_pops[rsid] += len(variant['calls'])
         ref = [variant['referenceBases']]
         alts = variant['alternateBases']
         gts = ref + alts
         for call in variant['calls']:
             if not population(call):
                 continue
+            total_pops[rsid] += 1
             # convert genotype indices into genotypes
             gt = [gts[i] for i in call['genotype']]
             if matches(gt, genotypes[rsid]):
